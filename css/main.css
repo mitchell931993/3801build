@@ -1,0 +1,132 @@
+/* this is css for the navbar and footer of all web pages  only css file used.*/
+
+.whitetext{
+    color:white;
+}
+
+.redtext{
+	color: red;
+}
+
+.greentext{
+	color: green;
+}
+
+.animate-if {
+  background:white;
+  border:1px solid black;
+  padding:10px;
+}
+
+.animate-if.ng-enter, .animate-if.ng-leave {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+
+.animate-if.ng-enter,
+.animate-if.ng-leave.ng-leave-active {
+  opacity:0;
+}
+
+.animate-if.ng-leave,
+.animate-if.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.brand{
+    height: 120%;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.logo{
+    height: 15%;
+    width: 15%;
+    display: block;
+    margin: 0 auto;
+}
+.image{
+    height: auto;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.about-us{
+    height: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.navbar-default {
+    background-color: #342800 !important;
+    border-color: #342800;
+    background-image: none !important;
+}
+
+.btn-danger{
+    background-image: none;
+}
+
+.footer{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white;
+    background-color: #342800;
+}
+/* css for footer */
+.footer>div>div>div>p, i,a{
+    color: gray;
+    text-decoration: none;
+}
+
+.item{
+    height: 100vh;
+    width: auto;
+}
+
+.footer>div>div>div>a:hover,i:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.white{
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a{
+    color: white;
+}
+
+.navbar{
+    border-radius: 0px;
+}
+
+a{
+      text-decoration: none;
+      color: black;
+ }
+
+ a:hover{
+    text-decoration: none;
+    color: gray;
+ }
+.maincontent{
+    margin-top: 80px;
+}
+.social>a{
+    color:gray !important;
+}
+.social>a:hover{
+    color:white !important;
+}
+.green{
+    color:green;
+}
+.red{
+    color:red;
+}
+
+.formLabel {
+    text-align:left;
+}

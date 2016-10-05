@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html ng-app="IoT-School">
+<head>
+  <title id="title">Data | IoT School</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../resources/iot_logo.png">
+  <!-- select2 -->
+  <link href="../scripts/select2-4.0.0/dist/css/select2.min.css" rel="stylesheet" />
+  <!-- JQuery -->
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../scripts/select2-4.0.0/dist/js/select2.full.min.js"></script>
+  <!-- <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+      <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script> -->
+
+  <!-- Angular JS here-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+  <!-- calls schoolibrary through angular -->
+  <schoolibrary></schoolibrary>
+  <!-- date picker -->
+  <link href="../scripts/bootstrap-datepicker-1.4.0-dist/css/bootstrap-datepicker3.min.css" rel="stylesheet"/>
+  <script src="../scripts/bootstrap-datepicker-1.4.0-dist/js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../js/ng-file-upload-all.js"></script>
+  <script type="text/javascript" src="../js/ng-file-upload-all.min.js"></script>
+
+</head>
+<body>
+
+  <schoolnavbar></schoolnavbar>
+  <div class="container maincontent" ng-controller="EventController">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">  <h1> Search Data </h1></div>
+      <div class="panel-body">
+        <form>
+          <div class="row">
+           <div class="col-md-2">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <input type="checkbox" id="temperatureCheck" aria-label="temp">
+              </span>
+              <input type="text" class="form-control" aria-label="temp" value="Temperature" readonly>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+          <div class="col-md-2">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <input type="checkbox" id="UVCheck"ria-label="temp">
+              </span>
+              <input type="text" class="form-control" aria-label="temp" value="UV" readonly>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+          <div class="col-md-2">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <input type="checkbox" id="humidityCheck" aria-label="temp">
+              </span>
+              <input type="text" class="form-control" aria-label="temp" value="Humidity" readonly>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+          <div class="col-md-2">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <input type="checkbox" id="vibrationCheck" aria-label="temp">
+              </span>
+              <input type="text" class="form-control" aria-label="temp" value="Vibration" readonly>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+          <div class="col-md-2">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <input type="checkbox" id="distanceCheck" aria-label="temp">
+              </span>
+              <input type="text" class="form-control" aria-label="temp" value="Distance" readonly>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+          <div class="col-md-2">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <input type="checkbox" id="airCheck" aria-label="temp">
+              </span>
+              <input type="text" class="form-control" aria-label="temp" value="Air Quality" readonly>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+
+        </div><br>
+        <div class="row">
+          <div class="col-md-2">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <input type="checkbox" id="motionCheck" aria-label="temp">
+              </span>
+              <input type="text" class="form-control" aria-label="temp" value="Motion" readonly>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+          <div class="col-md-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <input type="checkbox" id="otherCheck" aria-label="temp">
+              </span>
+              <input type="text" class="form-control" aria-label="temp" id="otherValue" placeholder="Other" >
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+
+        </div>
+        <br>    
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="location">Location</label>
+              <select id="location" class="location-data" style="width: 70%">
+                <option value="All">All</option>
+              </select>        
+            </div>
+          </div>
+          <div class="col-md-9">
+            <div class="form-group">
+              <div class="input-daterange input-group" id="datepicker">
+               <span class="input-group-addon">Date</span>
+               <input type="text" id="startdate" class="input-sm form-control" name="start" />
+               <span class="input-group-addon">to</span>
+               <input type="text" id="enddate" class="input-sm form-control" name="end" />
+             </div>           
+           </div>
+         </div>
+
+       </div>
+       <button type="submit" id="searchData" class="btn btn-primary">Search Data</button>
+       <button type="submitAll" id="searchAll" class="btn btn-default">Search All Data</button>
+
+     </form>
+   </div></div>
+   <br>
+
+   <div class="row" ng-if="eventgroup" >
+    <div class="col-md-3">
+      <h3>Choose Your Data :</h3>
+      <div class="list-group" style="overflow:scroll;height:500px" role="tablist">
+        <a href="#{{event.data.name}}" class="list-group-item" role="tab" data-toggle="tab" ng-repeat="event in eventgroup">
+          <h4 class="list-group-item-heading"><span class="glyphicon glyphicon-star-empty"></span> {{event.data.type}} </h4>
+          <p class="list-group-item-text">{{event.data.name}}</p>
+          <p class="list-group-item-text">@{{event.data.school}}</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Data</h3>
+        </div>
+        <div class="tab-content" style="overflow:scroll;height:500px">
+          <div class="panel-body tab-pane fade in" id="{{event.data.name}}" ng-repeat="event in eventgroup">
+            <h3> Download Data in : </h3>
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+              <div class="btn-group" role="group">
+                <button type="button" ng-click="downloadtoCSV({ filename: 'data.csv' },event.data.events)" class="btn btn-success"><i class="fa whitetext fa-table"></i> CSV</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button type="button" id="txtbutton" ng-click="downloadtoTXT(event.data.events)" download="info.txt" class="btn btn-primary"><i class="whitetext fa fa-file-text-o"></i> TXT</button>
+              </div>
+            </div>
+            <h3 class="text-center">{{event.data.name}} @ {{event.data.school}}</h3>
+            <h3><i class="fa fa-area-chart"></i> Graph</h3>
+            <div>
+            <canvas id="line" class="chart chart-line" chart-data="event.graph.graphData"
+             chart-labels="event.graph.graphLabel" chart-legend="true" chart-series="event.graph.graphSeries" chart-click="onClick">
+          </canvas>
+          <h3><i class="fa fa-table"></i> Table</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Date</th>
+                  <th>Data</th>
+                  <th>Location</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="oneevent in event.data.events">
+                  <th scope="row">{{$index+1}}</th>
+                  <td>{{oneevent.time}}</td>
+                  <td>{{oneevent.data}}</td>
+                  <td>{{event.data.school}}</td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </div> 
+
+        </div><!--panelbody--> 
+
+      </div> 
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<script type="text/javascript" src="../bower_components/Chart.js/Chart.js"></script>
+<script src="../bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<link rel="stylesheet" href="../bower_components/angular-chart.js/dist/angular-chart.css">
+<script type="text/javascript">
+  $(document).ready(function() {
+    $.get( "https://iotschoolbackend.herokuapp.com/schools/getData", function( response ) {
+      var datas = [];
+      response.forEach(function(data){
+        var JSON = { "id" : data.id,"text" : data.name };
+        datas.push(JSON);
+      });
+      $(".location-data").select2({
+        data: datas
+      });
+    });
+  });
+  $(' .input-daterange').datepicker({
+    format: "dd/mm/yy",
+    startDate: "12/9/15",
+    todayBtn: true,
+  });
+  $('.list-group-item').click(function(){
+    $('.list-group-item').removeClass("active");
+    $(this).addClass("active"); 
+  });
+
+  var temp = $('#temperatureCheck').val();
+  var UV = $('UVCheck').val();
+  var vibrate = $('#vibrationCheck').val();
+  var motion = $('#motionCheck').val();
+  var air = $('#airCheck').val();
+  var humid = $('#humidityCheck').val();
+  var dist = $('#distanceCheck').val();
+  var other = $('#otherCheck').val();
+
+
+
+</script>
+<script type="text/javascript" src="../bower_components/Chart.js/Chart.js"></script>
+<script src="../bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<link rel="stylesheet" href="../bower_components/angular-chart.js/dist/angular-chart.css">
+<script type="text/javascript" src="//cdn.jsdelivr.net/sparkjs/0.5.9/spark.min.js">
+</script>
+<script type="text/javascript" src="../js/login.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
+<script type="text/javascript" src="../js/directive.js"></script>
+<script src="../js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html ng-app="IoT-School">
+<head>
+    <title id="title">User Management | IoT School</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../resources/iot_logo.png">
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-select.css">
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap-select.js"></script>
+
+
+    <!-- Angular JS here-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script type="text/javascript" src="../js/ng-file-upload-all.js"></script>
+    <script type="text/javascript" src="../js/ng-file-upload-all.min.js"></script>
+
+    <schoolibrary></schoolibrary>
+
+</head>
+<body>
+    <schoolnavbar></schoolnavbar>
+    <div class="container maincontent">
+        <div class="row">
+            <h2>User Management in <strong><u><span id="school"> Some School </span> </strong></u></h2><br>
+            <div>
+                <div>
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Students List</a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Teacher List</a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Class List</a></li>
+                </ul>
+                
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div role="tabpanel row" class="tab-pane active" id="home"><br>
+                      <div class="col-md-2">
+                        <h4>Command Center :</h4>
+                        <ul class="nav nav-pills nav-stacked">
+
+                            <li role="presentation"><a class="btn btn-primary" href="#" data-target=".studentregister" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span> Add new Student</a></li>
+                            <li role="presentation"><a class="btn btn-danger" id="removestud" href="#"> <span class="glyphicon glyphicon-remove"></span> Remove Selected</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-10" ng-controller="StudentController">
+                        <table class="table table-striped table-bordered table-hover" id="mahtable">
+                         <thead>
+                           <tr> 
+                            <th>Select</th>
+                               <th>First Name:</th>
+                               <th>Last Name:</th>
+                               <th>Email:</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                       <form>
+                        <tr ng-repeat="student in students">
+                            <td><input type="checkbox" name="select" class="check" value="{{student.id}}"></td>
+                            <td>{{student.firstName}}</td>
+                            <td>{{student.lastName}}</td>
+                            <td>{{student.email}}</td>
+                        </tr>
+                        </form>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div role="tabpanel row" class="tab-pane" id="profile"><br>
+            <div class="col-md-2">
+                <h4>Command Center :</h4>
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation"><a class="btn btn-primary" href="#" data-target=".teacherregister" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span> Add new Teacher</a></li>
+                    <li role="presentation"><a class="btn btn-danger" id="removeteac" href="#"> <span class="glyphicon glyphicon-remove"></span> Remove Selected</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10" ng-controller="TeacherController">
+                        <table class="table table-striped table-bordered table-hover" id="mahtable">
+                         <thead>
+                           <tr> 
+                            <th>Select</th>
+                               <th>First Name:</th>
+                               <th>Last Name:</th>
+                               <th>Email:</th>
+                               <th>Class:</th>
+                               <th>Device Assigned:</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                       <form>
+                        <tr ng-repeat="teacher in teachers">
+                            <td><input type="checkbox" class="checktea" name="select" value="{{teacher.id}}"></td>
+                            <td>{{teacher.firstName}}</td>
+                            <td>{{teacher.lastName}}</td>
+                            <td>{{teacher.email}}</td>
+                            <td><p>Class Zero</p></td>
+                            <td><p>-</p></td>
+                        </tr>
+                        </form>
+                    </tbody>
+                </table>
+            </div></div>
+                <div role="tabpanel" class="tab-pane" id="messages"><h1>TEST3</h1></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+<br>
+
+
+<!-- Modal -->
+<div class="modal fade studentregister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Create Students</h4>
+    </div>
+    <div class="modal-body">
+        <form id="studentForm">
+          <div class="form-group" >
+            <label for="firstname">First Name</label>
+            <input type="text" class="form-control" name="firstname" id="sfirstname" placeholder="First Name">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="form-control" name="lastname" id="slastname" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" id="semail" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="spassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="confirmPass"> Confirm Password</label>
+            <input type="password" class="form-control" id="sconfirmPass" placeholder="Confirm Password">
+        </div>
+        <input type="submit" value="Register Student"class="btn btn-primary"></button>
+    </form>
+</div>
+<div class="modal-footer">
+
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Modal -->
+<div class="modal fade teacherregister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Create Teachers</h4>
+    </div>
+    <div class="modal-body">
+        <form id="teacherForm">
+          <div class="form-group" >
+            <label for="firstname">First Name</label>
+            <input type="text" class="form-control" name="firstname" id="tfirstname" placeholder="First Name">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="form-control" name="lastname" id="tlastname" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" id="temail" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="tpassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="confirmPass"> Confirm Password</label>
+            <input type="password" class="form-control" id="tconfirmPass" placeholder="Confirm Password">
+        </div>
+        <input type="submit" value="Register Teacher"class="btn btn-primary"></button>
+    </form>
+</div>
+<div class="modal-footer">
+
+</div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+    document.getElementById("school").innerHTML = localStorage.getItem("loggedinname");
+        // Attach a submit handler to the form
+        $( "#teacherForm" ).submit(function( event ) {
+
+          // Stop form from submitting normally
+          event.preventDefault();
+
+          // Get some values from elements on the page:
+          var $form = $( this ),
+          //url = "http://iotschool-backend.azurewebsites.net/schools/create";
+          url = "https://iotschoolbackend.herokuapp.com/schools/teachers/create";
+
+          var first= document.getElementById("tfirstname").value;
+          var last= document.getElementById("tlastname").value;
+          var em= document.getElementById("temail").value;
+          var pass = document.getElementById("tpassword").value;
+          var schoolid = localStorage.getItem("loggedinid");
+
+          this.innerHTML = "<h2>Loading...</h2>" ;
+          // Send the data using post
+          var posting = $.post( url, { firstName:first, lastName:last,email:em,password:pass,schoolid: schoolid } );
+
+          // Put the results in a div
+          posting.done(function(data) {
+            if(data == "A new Teacher Created"){
+              location.reload();
+            }else{
+              window.alert("Something Wrong happened");
+            }
+          });
+     });
+
+        // Attach a submit handler to the form
+        $( "#studentForm" ).submit(function( event ) {
+
+          // Stop form from submitting normally
+          event.preventDefault();
+
+          // Get some values from elements on the page:
+          var $form = $( this ),
+          //url = "http://iotschool-backend.azurewebsites.net/schools/create";
+          url = "https://iotschoolbackend.herokuapp.com/schools/students/create";
+
+          var first= document.getElementById("sfirstname").value;
+          var last= document.getElementById("slastname").value;
+          var em= document.getElementById("semail").value;
+          var pass = document.getElementById("spassword").value;
+          var schoolid = localStorage.getItem("loggedinid");
+
+          this.innerHTML = "<h2>Loading...</h2>" ;
+          // Send the data using post
+          var posting = $.post( url, { firstname:first, lastname:last,email:em,password:pass,schoolid: schoolid } );
+
+          // Put the results in a div
+          posting.done(function(data) {
+            if(data == "A new Student Created"){
+              location.reload();
+            }else{
+              window.alert("Something Wrong happened");
+            }
+          });
+     });
+</script>
+<script type="text/javascript" src="../bower_components/Chart.js/Chart.js"></script>
+<script src="../bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<link rel="stylesheet" href="../bower_components/angular-chart.js/dist/angular-chart.css">
+<script type="text/javascript" src="//cdn.jsdelivr.net/sparkjs/0.5.9/spark.min.js">
+</script>
+<script type="text/javascript" src="../js/login.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
+<script type="text/javascript" src="../js/directive.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>

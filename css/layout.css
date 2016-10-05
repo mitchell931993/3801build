@@ -1,0 +1,24 @@
+.ui-layout-pane {
+    padding-left:0px !important;
+    padding-right:0px !important;
+    padding-top:0px !important;
+    padding-bottom:0px !important;
+}
+
+.ui-layout-west {
+    padding:0px !important;
+}
+
+.nav {
+    padding-right:0px !important;
+}
+
+.nav-pills>li>a {
+    border-radius:0px !important;
+    color:#8E8D8D;
+}
+
+.nav-pills>li.active>a {
+    background-color:#DDDDDD !important;
+}
+

@@ -1,0 +1,310 @@
+    <!DOCTYPE html>
+    <html ng-app="IoT-School">
+    <head>
+      <title>IoT School</title>
+
+      <!-- Favicon -->
+      <link rel="icon" type="image/png" href="../image/IoT-logo.png">
+      <!-- jQuery -->
+      <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+      <!-- Bootstrap Core JavaScript -->
+       <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+      <!-- add schoolibary through angular -->
+      <schoolibrary></schoolibrary>
+      <!-- Angular JS here-->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+      <!-- datatables.net jquery plugin here -->
+         <script src="../bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+      <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+
+
+    </head>
+
+    <body>
+
+      <div id="login"> </div>
+
+      <nav class="navbar navbar-default navbar-fixed-top" >
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class=".col-md-2">
+              <a class="navbar-brand" href="#"> <img class="brand"src="../resources/logoiot2.png"></a>
+            </div>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav" ng-controller="MainController">
+              <li class="active" ><a  href="/schools/">Dashboard</a></li>
+              <li><a href="data.html">Data</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><p class="navbar-text " id="loginuser">Signed in as Blanky Blanks</li>
+              <li><a onclick="logout()">Logout</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    <div class="container maincontent" ng-controller="SchoolController"> 
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row">
+                    <label class="col-sm-3">Account name: Blanky Blanks</label>
+                    <button type="button" class="btn btn-default "data-toggle="modal" data-target="#changeAccName">
+                        Change
+                    </button>
+
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <label class="col-sm-3">Email: Example@example.com</label>
+                    <button type="button" class="btn btn-default "data-toggle="modal" data-target="#changeEmail">
+                        Change
+                    </button>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <label class="col-sm-3">School Name: School school</label>
+                    <button type="button" class="btn btn-default"data-toggle="modal" data-target="#changeName">
+                        Change </button>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <button type="button" class="btn btn-default "data-toggle="modal" data-target="#changePassword">
+                    Change Password </button>
+            </li>
+        </ul>
+    </div>
+
+  <footer class="footer">
+   <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h4> <i class="white fa fa-newspaper-o"></i> In the News </h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel malesuada ipsum.</p>
+      </div>
+      <div class="col-md-3 social" >
+        <h4><i class="white fa fa-users"></i> Get Social</h4>
+        <a href="#"><i class="fa fa-facebook-official"></i> Facebook </a><br>
+        <a href="#"><i class="fa fa-twitter-square"></i> Twitter </a><br>
+        <a href="#"><i class="fa fa-instagram"></i> Instagram </a><br>
+      </div>
+      <div class="col-md-3">
+        <h4><i class="white fa fa-phone"></i> Get In Touch </h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel malesuada ipsum.</p>
+      </div>
+      <div class="col-md-3">
+        <h4><i class="white fa fa-question-circle"></i> FAQ </h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vel malesuada ipsum.</p>
+      </div>
+    </div>
+  </div>
+  </footer>
+
+  <!-- Modals for profile settings -->
+    <div class="modal fade" id="changeEmail" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type=button class="close" data-dismiss="modal" aria-label="Close"
+                        ><span aria-hidden="true">&times;</span>
+                    </button> 
+                    <h4 class="modal-title" id="emailModalLabel">Change Email</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label  class="col-sm-4  formLabel "> Current Email:</label>
+                            <label  > Example@example</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailUpdate" class="col-sm-4 formLabel ">New Email:</label>
+                            <div class=col-sm-6>
+                                <input type="email" class="form-control" id="emailUpdate" placeholder="Email@address.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailConfirm" class="col-sm-4 formLabel ">Confirm Email:</label>
+                            <div class=col-sm-6>
+                                <input type="email" class="form-control" id="emailConfirm" placeholder="Email@address.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="epasswordEnter" class="col-sm-4 formLabel ">Password Confirmation:</label>
+                            <div class=col-sm-6>
+                                <input type="password" class="form-control" id="epasswordEnter" placeholder="password">
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-default">Confirm Change</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="changeAccName" tabindex="-1" role="dialog" aria-labelledby="nameModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type=button class="close" data-dismiss="modal" aria-label="Close"
+                        ><span aria-hidden="true">&times;</span>
+                    </button> 
+                    <h4 class="modal-title" id="nameModalLabel">Change Account Name</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label  class="col-sm-4  formLabel"> Current Name:</label>
+                            <label  > Blanky Blanks</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameUpdate" class="col-sm-4   formLabel">New Name:</label>
+                            <div class=col-sm-6>
+                                <input type="text" class="form-control" id="nameUpdate" placeholder="Email@address.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameConfirm" class="col-sm-4 formLabel ">Confirm Name:</label>
+                            <div class=col-sm-6>
+                                <input type="text" class="form-control" id="nameConfirm" placeholder="Email@address.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="npasswordEnter" class="col-sm-4 formLabel  ">Password Confirmation:</label>
+                            <div class=col-sm-6>
+                                <input type="password" class="form-control" id="npasswordEnter" placeholder="password">
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-default">Confirm Change</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <div class="modal fade" id="changeName" tabindex="-1" role="dialog" aria-labelledby="nameModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type=button class="close" data-dismiss="modal" aria-label="Close"
+                        ><span aria-hidden="true">&times;</span>
+                    </button> 
+                    <h4 class="modal-title" id="nameModalLabel">Change School Name</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label  class="col-sm-4  formLabel"> Current Name:</label>
+                            <label  class="  formLabel"> Blanky Blanks</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameUpdate" class="col-sm-4  formLabel">New School Name:</label>
+                            <div class=col-sm-6>
+                                <input type="text" class="form-control" id="nameUpdate" placeholder="Email@address.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameConfirm" class="col-sm-4 formLabel ">Confirm School Name:</label>
+                            <div class=col-sm-6>
+                                <input type="text" class="form-control" id="nameConfirm" placeholder="Email@address.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="npasswordEnter" class="col-sm-4   formLabel">Password Confirmation:</label>
+                            <div class=col-sm-6>
+                                <input type="password" class="form-control" id="npasswordEnter" placeholder="password">
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-default">Confirm Change</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type=button class="close" data-dismiss="modal" aria-label="Close"
+                        ><span aria-hidden="true">&times;</span>
+                    </button> 
+                    <h4 class="modal-title" id="passwordModalLabel">Change Password</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="passwordUpdate" class="col-sm-4 formLabel ">New Password:</label>
+                            <div class=col-sm-6>
+                                <input type="password" class="form-control" id="emailUpdate" placeholder="Email@address.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordConfirm" class="col-sm-4 formLabel ">Confirm new Password:</label>
+                            <div class=col-sm-6>
+                                <input type="password" class="form-control" id="emailConfirm" placeholder="Email@address.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordEnter" class="col-sm-4 formLabel ">Original Password:</label>
+                            <div class=col-sm-6>
+                                <input type="password" class="form-control" id="passwordEnter" placeholder="password">
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-default">Confirm Change</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+      var logout = function(){
+        localStorage.removeItem("loggedinemail");
+        localStorage.removeItem("loggedinpassword");
+        location.replace("/");
+      }
+      var signin = localStorage.getItem("loggedinname");
+      document.getElementById("loginuser").innerHTML = "Signed In as "+signin;
+    </script>
+
+          <script type="text/javascript" src="//cdn.jsdelivr.net/sparkjs/0.5.9/spark.min.js">
+          </script>
+          <script type="text/javascript" src="../js/login.js"></script>
+          <script type="text/javascript" src="../js/app.js"></script>
+          <script type="text/javascript" src="../js/directive.js"></script>
+          <script src="../js/script.js"></script>
+          <script type="text/javascript">
+
+          </script>
+        </body>
+        </html>
+

@@ -1,0 +1,285 @@
+  <!DOCTYPE html>
+  <html ng-app="IoT-School">
+  <head>
+    <title>IoT School</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../resources/iot_logo.png">
+
+    <!-- JQuery -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- calls angular libarary -->
+    <library></library>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script> 
+    <!-- Angular JS here-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script type="text/javascript" src="js/ng-file-upload-all.js"></script>
+    <script type="text/javascript" src="js/ng-file-upload-all.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <div id="login"> </div>
+
+    <navbar></navbar>
+
+    <div class="carousel-container">
+      <div  class="carousel slide" data-ride="carousel">
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+         <div class="item">
+          <img src="resources/index/Winter-Tiger-Wild-Cat-Images.jpg" alt="Internet of Things School">
+          <div class="carousel-caption">
+            <h1>Welcome to School Things</h1>
+            <p>A platform constructed to aid in learning programming and hardware construction skills</p>
+          </div>
+        </div>
+        <div class="item active">
+         <img src="resources/index/tree-247122.jpg" alt="Internet of Things School">
+         <div class="carousel-caption">
+          <h1>Welcome to School Things</h1>
+          <p>A platform constructed to aid in learning programming and hardware construction skills.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container" ng-controller="MainController as main"> 
+  <br><br>
+  <div class="about-us">
+    <h1 class="text-center"> About Us</h1>
+    <hr>
+    <img class="logo" src="./resources/iot_logo.png"> <br>
+    <p>
+      The Internet of Things is all around us and encumbrances everything and everyone. As such the Internet of Things - School intends to embrace this reality and utilise the Internet of Things to teach students from all across Queensland about programing and hardware development.
+      This will be done by providing students with both a hardware kit and code base which will allow students to record a vast range of data inputs giving them a better sense of the grand scale of things as well as teaching them programming and hardware construction skills.
+    </p>
+    <br>
+  </div>
+  <div class="more-about-us">
+    <div class="row">
+      <div class="col-md-4">
+        <img class="image"src="resources/index/Winter-Tiger-Wild-Cat-Images.jpg">
+        <h2>School </h2>
+        <p>Schools will be able to ensure that their students and teacher are on track learning new and relevant skills for todays new information technology world.</p>
+      </div>
+      <div class="col-md-4">
+        <img class="image" src="resources/index/Winter-Tiger-Wild-Cat-Images.jpg">
+        <h2>Teacher </h2>
+        <p>Teachers have access to a series of guides and tutorials that will help them better determine how best to incorporate the Internet of Things - school into their teaching plans. Teachers are also provided the ability to assign devices to students amongst their cohort, and alter the code of any device if the need arises. </p>
+      </div>
+      <div class="col-md-4">
+        <img class="image" src="resources/index/Winter-Tiger-Wild-Cat-Images.jpg">
+        <h2>Student </h2>
+        <p>Students have access to the vast trove of guides and provided code that will allow them to utilise the hardware kit to its fullest all while learning important programming and hardware construction skills.</p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+
+  </div>
+
+  <br>
+  <br>
+</div>
+
+<newfooter></newfooter>
+
+
+<!-- Modal -->
+<div class="modal fade login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Login</h4>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="user">Email address</label>
+            <input type="email" class="form-control" name="user" id="useremail" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="pass">Password</label>
+            <input type="password" class="form-control" name="pass" id="passwordlogin" placeholder="Password">
+          </div>
+          <input type="submit" id="submitlogin" value="Log in"class="btn btn-primary"></button>
+        </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- Modal -->
+<div class="modal fade signup"  role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form id="signupForm">
+          <div class="form-group" >
+            <label for="emailaddress">Email address</label>
+            <input type="email" class="form-control" name="email" id="emailaddress" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="name">School's Name</label>
+            <div class="form-group">
+              <select id="location" class="location-data" >
+              </select>         
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="confirmPass">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPass" placeholder="Confirm Password">
+          </div>
+          <input type="submit" id="submitsignup" value="Sign Up"class="btn btn-primary"></button>
+        </form>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/sparkjs/0.5.9/spark.min.js">
+</script>
+
+<script type="text/javascript" src="bower_components/Chart.js/Chart.js"></script>
+<script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+<script type="text/javascript" src="//cdn.jsdelivr.net/sparkjs/0.5.9/spark.min.js">
+</script>
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/directive.js"></script>
+<script src="js/script.js"></script>
+<script>
+        // Attach a submit handler to the form
+        $( document ).ready(function() {
+
+          if(localStorage.getItem("loggedinemail") != null && localStorage.getItem("loggedinname") != null && localStorage.getItem("loggedinid") != null && localStorage.getItem("loggedinpassword") != null){
+            location.replace("./schools/");
+          }
+
+          $.get( "https://iotschoolbackend.herokuapp.com/schools/getData", function( response ) {
+            var datas = [];
+            response.forEach(function(data){
+              var JSON = { "id" : data.id,"text" : data.name };
+              datas.push(JSON);
+            });
+            $(".location-data").select2({
+              data: datas
+            });
+          });
+          
+        });
+        
+        $( "#loginForm" ).submit(function( event ) {
+
+              // Stop form from submitting normally
+              event.preventDefault();
+
+          // Get some values from elements on the page:
+          var $form = $( this ),
+          //url = "http://iotschool-backend.azurewebsites.net/schools/login";
+          //url = "http://localhost:3000/schools/login";
+          url = "https://iotschoolbackend.herokuapp.com/login";
+
+          var us= document.getElementById("useremail").value;
+          var pas= document.getElementById("passwordlogin").value;
+          var again = this.innerHTML;
+          this.innerHTML = "<h2>Loading...</h2>" ;
+          console.log(us + pas);
+          // Send the data using post
+          var posting = $.post( url, { user:us, pass:pas } );
+
+          posting.done(function(data) {
+            if(data != "Try Again"){  
+              localStorage.setItem("loggedinemail", data.email);
+              localStorage.setItem("loggedinname", data.name);
+              localStorage.setItem("loggedinpassword", data.password);
+              localStorage.setItem("loggedinid", data.id);
+              location.replace("./schools/");  
+            }else{
+              console.log(again);
+              $("#loginForm").html(again);
+              alert("Wrong Password");
+              
+            }
+          });
+        });
+
+        // Attach a submit handler to the form
+        $( "#signupForm" ).submit(function( event ) {
+
+          // Stop form from submitting normally
+          event.preventDefault();
+
+          // Get some values from elements on the page:
+          var $form = $( this ),
+          url = "https://iotschoolbackend.herokuapp.com/schools/create";
+          //url = "http://localhost:5000/schools/create";
+
+          var em= document.getElementById("emailaddress").value;
+          var nam= document.getElementById("select2-location-container").title;
+          var pass= document.getElementById("password").value;
+          this.innerHTML = "<h2>Loading...</h2>" ;
+          console.log(em + nam + pass);
+          var mytok;
+          spark.createUser(em, pass, function(err, data) {
+            if (!err) {
+              var loginPromise = spark.login({username: em, password: pass});
+              loginPromise.then(
+                function(token) {
+                  console.log('Login successful! access_token:', token);
+                  mytok = token.access_token;
+                  console.log(mytok)
+                  // Send the data using post
+                  var posting = $.post( url, { email:em, name:nam, password:pass,accessToken: mytok } );
+                  // Put the results in a div
+                  posting.done(function(data) {
+                    console.log(data);
+                    if(data != null){
+                      localStorage.setItem("loggedinemail", data.email);
+                      localStorage.setItem("loggedinname", data.name);
+                      localStorage.setItem("loggedinpassword", data.password);
+                      localStorage.setItem("loggedinid", data.id);
+                      location.replace("./schools/");
+                    }
+                  });
+                },
+                function(err) {
+                  console.log('Login failed:', err);
+                }
+                );
+}
+}); 
+});
+</script>
+
+<script>
+  $('.carousel').carousel({
+    interval: 2000
+  });
+</script>
+</body>
+</html>
